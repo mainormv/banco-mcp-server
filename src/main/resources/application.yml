@@ -1,0 +1,23 @@
+spring:
+  main:
+    banner-mode: off
+  ai:
+    mcp:
+      server:
+        name: banco-mock-mcp
+        version: 1.0.0
+        transport: SSE
+
+server:
+  port: ${PORT:8080}
+
+jwt:
+  secret: banco-mcp-server-secret-key-2024-seguro-32b
+  expiration: 86400000
+
+logging:
+  level:
+    root: ERROR
+    com.banco.mcp: ERROR
+  pattern:
+    console: "%d{HH:mm:ss} %-5level %logger{36} - %msg%n"
