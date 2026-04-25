@@ -6,7 +6,7 @@ spring:
       server:
         name: banco-mock-mcp
         version: 1.0.0
-        transport: SSE
+        transport: HTTP
 
 server:
   port: ${PORT:8080}
