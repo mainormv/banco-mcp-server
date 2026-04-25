@@ -20,9 +20,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
+    private final McpApiKeyFilter mcpApiKeyFilter;
 
-    public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter, McpApiKeyFilter mcpApiKeyFilter) {
         this.jwtAuthFilter = jwtAuthFilter;
+        this.mcpApiKeyFilter = mcpApiKeyFilter;
     }
 
     @Bean
@@ -35,6 +37,7 @@ public class SecurityConfig {
                 .requestMatchers("/sse", "/sse/**", "/mcp/**").permitAll()
                 .anyRequest().authenticated()
             )
+            .addFilterBefore(mcpApiKeyFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
