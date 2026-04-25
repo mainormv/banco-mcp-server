@@ -15,8 +15,6 @@ jwt:
   secret: banco-mcp-server-secret-key-2024-seguro-32b
   expiration: 86400000
 
-mcp:
-  api-key: ${MCP_API_KEY:mcp-key-local-dev}
 
 logging:
   level:
